@@ -6,18 +6,16 @@ On release of Encyclopedia of Life (EOL) v3 in
 November 2018, an unspecified collection of EOL page ids (aka taxon concept ids)
 were deprecated and no longer supported. This issue was
 documented in https://github.com/jhpoelen/eol-globi-data/issues/383 . This
-issue described an EOL page https://eol.org/pages/216713 previously associated 
+issue describes an EOL page https://eol.org/pages/216713 previously associated 
 with Bees (Apis) was no longer available and generated a server error. 
 
 Methods
 
-To prevent pointing to no longer present EOL web pages from GloBI (aka broken
-links), all deprecated EOL ids were prefixed with "EOL_V2:" instead of "EOL:" in
-lieu of a better way to document deprecated identifiers. To do this, an
-automated precedure was implemented to do the following. First, a EOL v3 taxon
+To prevent pointing to no longer present EOL web pages from GloBI, 
+an automated precedure was implemented to do the following. First, an EOL v3 taxon
 archive ([1]) was compared against a list of EOL ids on GloBI's Taxon Graph
 v0.3.8 ([2]) to create a list of EOL ids only present in GloBI's list. Then, all
-no longer supported EOL ids were marked in taxonMap.tsv.gz. taxonCache.tsv.gz by
+no longer supported EOL ids were marked in taxonMap.tsv.gz and taxonCache.tsv.gz by
 replacing the prefix "EOL:" to "EOL_V2:". Patch files were then generated using
 the unix "diff" comment to document the changes between the original
 taxonMap/taxonCache files. The procedure was captured as a bash script in
