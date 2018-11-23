@@ -1,0 +1,22 @@
+Global Biotic Interactions: Taxon Graph Patch 20181123-0 
+
+On release of Encyclopedia of Life (EOL) v3 in November 2018, an unspecified collection of EOL page ids (aka taxon concept ids) were on longer support and failed to resolve on the EOL webpages. This issue was first reported in https://github.com/jhpoelen/eol-globi-data/issues/383 in which EOL page https://eol.org/pages/216713 associated with Bees (Apis) generated a server error and failed to be displayed. 
+
+To prevent pointing to no longer present EOL web pages from GloBI (aka broken links), all deprecated EOL ids were prefixed with "EOL_V2:" instead of "EOL:" in lieu of a better way to document deprecated identifiers. To do this, an automated precedure was implemented to do the following. First, a EOL v3 taxon archive ([1]) was compared against a list of EOL ids on GloBI's Taxon Graph v0.3.8 ([2]) to create a list of EOL ids only present in GloBI's list. Then, all no longer supported EOL ids were marked in taxonMap.tsv.gz. taxonCache.tsv.gz by replacing the prefix "EOL:" to "EOL_V2:". Patch files were then generated using the unix "diff" comment to document the changes between the original taxonMap/taxonCache files. The procedure was captured as a bash script in "create_patch.sh".  
+
+
+Patch files:
+
+taxonMap.tsv.patch.gz
+taxonCache.tsv.patch.gz
+
+were created using:
+create_patch.sh
+
+in period 2018-11-21/2018-11-23 .
+
+References
+
+[1] "EOL Dynamic Hierarchy with landmark taxa", https://opendata.eol.org/dataset/b6bb0c9e-681f-4656-b6de-39aa3a82f2de/resource/bac4e11c-28ab-4038-9947-02d9f1b0329f/download/eoldynamichierarchywithlandmarks.zip with hash://sha256/6a26e52adf1518eebac3556c05370396251ca3ec6a9059694b91a2549fc4013a . Accessed on 2018-11-21 . 
+[2] Poelen, Jorrit H. (2018). Global Biotic Interactions: Taxon Graph (Version 0.3.8) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.1489121
+
