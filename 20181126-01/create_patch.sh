@@ -9,7 +9,7 @@ mkdir -p input output
 
 set -xe
 
-#wget https://zenodo.org/record/1495302/files/taxonMap.tsv.gz -O input/taxonMap.tsv.gz
+wget https://zenodo.org/record/1495302/files/taxonMap.tsv.gz -O input/taxonMap.tsv.gz
 
 zcat input/taxonMap.tsv.gz | tail -n+2 | grep  -v -P "Scorpaenopsis gibbosa"  | gzip > output/taxonMapPatched.tsv.gz
 zcat input/taxonMap.tsv.gz | head -n1 | gzip > output/header.tsv.gz
