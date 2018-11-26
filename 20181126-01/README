@@ -1,0 +1,20 @@
+Global Biotic Interactions: Taxon Graph Patch 20181126-01
+
+Abstract / Introduction
+
+A suspicious interaction was observed in which a Humpback scorpionfish (Scorpaenopsis gibbosa) interacted with highlands scrub hypericum (Hypericum cumulicola). Also see https://github.com/jhpoelen/eol-globi-data/issues/385 . On close inspection, various incorrect mapping to Humpback scorpionfish (Scorpaenopsis gibbosa) were found. The mappings have been present since GloBI Taxon Graph v0.1.0 ([1]) and is suspected to be introduced by a name index bug that mapped "no name" taxa to the first resolve taxon.
+
+Methods 
+
+All name mapping in GloBI Taxon Graph v0.3.9 ([2]) to Humpback scorpionfish (Scorpaenopsis gibbosa) were removed except for the identity mappings (e.g., Scorpaenopsis gibbosa -> Scorpaenopsis gibbosa). A patch file was created by comparing the original taxonMap.tsv.gz file with the resulting taxonMap.tsv.gz file. The procedure was captured in the script create_patch.sh .
+
+This patch can be applied using the program "patch". This pogram is available on most unix-like systems.
+
+Result/ Discussion
+
+In total, this patch resulted in removal of 14475 - 20 = 14455 suspicious name mappings to Humpback scorpionfish (Scorpaenopsis gibbosa). 20 identify mappings were preserved and added the the bottom of the taxonMap.tsv.gz file. 
+
+References
+
+[1] Poelen, Jorrit H. (2017). Global Biotic Interactions: Taxon Graph (Version 0.1.0) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.265895
+[2] Poelen, Jorrit H. (2018). Global Biotic Interactions: Taxon Graph (Version 0.3.9) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.1495302
