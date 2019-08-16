@@ -8,7 +8,7 @@ mkdir -p input output
 
 # get active EOL dynamic hierarchy as of 2019-08-16 
 curl https://editors.eol.org/other_files/DWH/TRAM-809/DH_v1_1.tar.gz > input/eol-dh.tar.gz 
-cat input/eol-dh.tar.gz | gunzip | tar -xO ./taxon.tab | cut -f13 | tail -n+2 | sort | uniq | sort -n > output/eol-page-ids.tsv
+cat input/eol-dh.tar.gz | gunzip | tar -xO ./taxon.tab | cut -f13 | tail -n+2 | grep "^[0-9]" | sort | uniq | sort -n > output/eol-page-ids.tsv
 
 # get GloBI taxon graph 0.3.13
 curl https://zenodo.org/record/3244412/files/taxonMap.tsv.gz > input/taxonMap.tsv.gz
