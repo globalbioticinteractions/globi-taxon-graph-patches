@@ -26,6 +26,6 @@ zcat input/taxonCache.tsv.gz | sed -f output/eol-page-ids-v2-fix.sed | gzip > ou
 
 zcat input/taxonMap.tsv.gz | sed -f output/eol-page-ids-v2-fix.sed | gzip > output/taxonMap.tsv.gz
 
-diff <(cat input/taxonCache.tsv.gz | gunzip) <(cat output/taxonCache.tsv.gz| gunzip) | gzip > taxonCache.tsv.patch.gz
-diff <(cat input/taxonMap.tsv.gz | gunzip) <(cat output/taxonMap.tsv.gz| gunzip) | gzip > taxonMap.tsv.patch.gz
+diff <(cat input/taxonCache.tsv.gz | gunzip) <(cat output/taxonCache.tsv.gz| gunzip) | gzip > output/taxonCache.tsv.patch.gz
+diff <(cat input/taxonMap.tsv.gz | gunzip) <(cat output/taxonMap.tsv.gz| gunzip) | gzip > output/taxonMap.tsv.patch.gz
 
