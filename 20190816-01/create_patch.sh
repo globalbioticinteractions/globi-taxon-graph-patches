@@ -29,3 +29,11 @@ zcat input/taxonMap.tsv.gz | sed -f output/eol-page-ids-v2-fix.sed | gzip > outp
 diff <(cat input/taxonCache.tsv.gz | gunzip) <(cat output/taxonCache.tsv.gz| gunzip) | gzip > output/taxonCache.tsv.patch.gz
 diff <(cat input/taxonMap.tsv.gz | gunzip) <(cat output/taxonMap.tsv.gz| gunzip) | gzip > output/taxonMap.tsv.patch.gz
 
+
+
+zcat input/taxonMap.tsv.gz | cut -f3 | grep -P "^EOL:[0-9]" | sed s/EOL://g | sort -n | uniq > output/taxon-map-eol-page-ids.tsv
+zcat input/taxonCache.tsv.gz | tr '\t' '\n' | tr '|' '\n' | tr -d ' ' | grep "EOL:" | sed s/EOL://g | sort -n | uniq > output/taxon-cache-eol-page-ids.tsv
+
+cat output/taxon-map-eol-page-ids.tsv output/taxon-cache-eol-page-ids.tsv | sort -n | uniq > output/globi-eol-page-ids.tsv
+
+grep -F -x -f output/globi-eol-page-ids.tsv output/eol-page-ids.tsv > output/globi-eol-page-ids-active.tsv
