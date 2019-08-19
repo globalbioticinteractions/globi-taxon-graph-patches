@@ -36,7 +36,7 @@ zcat input/taxonCache.tsv.gz | tr '\t' '\n' | tr '|' '\n' | tr -d ' ' | grep "EO
 
 cat output/taxon-map-eol-page-ids.tsv output/taxon-cache-eol-page-ids.tsv | sort -n | uniq > output/globi-eol-page-ids.tsv
 
-diff --unchanged-group-format='' --changed-group-format='%<' output/globi-eol-page-ids.tsv output/eol-page-ids.tsv > output/globi-eol-page-ids-inactive.tsv
+diff --unchanged-group-format='' --changed-group-format='%<' output/globi-eol-page-ids.tsv output/eol-page-ids.tsv > output/globi-eol-page-ids-inactive.tsv || true
 
 cat output/globi-eol-page-ids-inactive.tsv | sed 's+^+s/\\(EOL:\\)\\(+g' | sed 's+$+\\)\\([^0-9]\\)/EOL_V2:\\2\\3\/+g' > output/eol-page-ids-inactive-cache.sed
 
