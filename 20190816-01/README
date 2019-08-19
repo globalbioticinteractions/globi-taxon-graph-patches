@@ -1,0 +1,51 @@
+Global Biotic Interactions: Taxon Graph Patch 20190816-01 
+
+Abstract / Introduction 
+
+Following release of Encyclopedia of Life (EOL) v3 in
+November 2018, an unspecified collection of EOL page ids (aka taxon concept ids)
+were deprecated and no longer supported. This issue was
+documented in https://github.com/jhpoelen/eol-globi-data/issues/383 and a patch
+was published [1]. This patch revisits the deprecated EOL page ids using 
+observations documented in https://github.com/jhpoelen/eol-globi-data/issues/403
+, a newly published EOL Dynamic Taxon Hierarchy [2] and a recent GloBI Taxon Graph
+version [3]. 
+
+Methods
+
+To prevent pointing to no longer present EOL web pages from GloBI, 
+an automated precedure was implemented to do the following: for each of 
+the page ids referenced in the current active version of the EOL 
+Dynamic Taxon Hierarchy, make sure that the GloBI Taxon Graph maps to 
+EOL page id with prefix "EOL:". For EOL pages ids that do *not* appear
+in the EOL Dynamic Taxon Hierarchy, ensure that that GloBI Taxon Graph maps
+to EOL page id with prefix "EOL_V2:". 
+
+To apply the patch, run the "patch" program against the original
+taxonCache/taxonMap files with the .patch files on any linux-y system.
+
+Patch files taxonMap.tsv.patch.gz and taxonCache.tsv.patch.gz were 
+created using: create_patch.sh in period 2019-08-16/2019-08-19 .
+
+Result/Discussion 
+
+The resulting patch re-mapped 19,369 previously assumed deprecated links
+back to active EOL page ids. Also, 15,418 assumed active pages were labeled
+as deprecated by prefixing them with EOL_V2: . Anectodal evidence [4] suggests
+that the EOL Dynamic Taxon Hierarchy does not include all active pages. This is
+why re-running the GloBI Taxon Graph against future version of the EOL Dynamic
+Taxon Hierarchy are expected. 
+
+References
+
+[1] Poelen, Jorrit H. (2018). Global Biotic Interactions: Taxon Graph Patches (Version 0.1) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.1495266
+
+[2] "EOL Dynamic Hierarchy Active Version",
+https://editors.eol.org/other_files/DWH/TRAM-809/DH_v1_1.tar.gz
+with hash://sha256/81d59d2225e61ed76f62daa4d213609fb53f30e42c7c80fbb400723c728eafa2 .
+Accessed on 2018-08-16 .  
+
+[3] Poelen, Jorrit H. (2019). Global Biotic Interactions: Taxon Graph 
+(Version 0.3.13) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.3244412
+
+[4] Jen Hammock (2019). GitHub. https://github.com/jhpoelen/eol-globi-data/issues/403#issuecomment-522148854.
