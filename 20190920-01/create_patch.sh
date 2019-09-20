@@ -38,7 +38,7 @@ cat output/taxon-map-eol-page-ids.tsv output/taxon-cache-eol-page-ids.tsv | sort
 
 diff --unchanged-group-format='' --changed-group-format='%<' output/globi-eol-page-ids.tsv output/eol-page-ids.tsv > output/globi-eol-page-ids-inactive.tsv || true
 
-cat output/globi-eol-page-ids-inactive.tsv | sed 's+^+s/\\(EOL:\\)\\(+g' | sed 's+$+\\)\\([^0-9]\\)/EOL_V2:\\2\\3\/+g' > output/eol-page-ids-inactive-cache.sed
+cat output/globi-eol-page-ids-inactive.tsv | sed 's+^+s/\\(EOL:\\)\\(+g' | sed 's+$+\\)\\([^0-9]\\)/EOL_V2:\\2\\3\/g+g' > output/eol-page-ids-inactive-cache.sed
 
 cat output/globi-eol-page-ids-inactive.tsv | sed 's+^+s/\\(\\t\\)\\(EOL:\\)\\(+g' | sed 's+$+\\)\\([^0-9]\\)/\\1EOL_V2:\\3\\4\/+g' > output/eol-page-ids-inactive-map.sed
 
