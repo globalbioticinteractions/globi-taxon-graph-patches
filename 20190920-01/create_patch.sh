@@ -47,3 +47,11 @@ zcat output/taxonMap0.tsv.gz | sed -f output/eol-page-ids-inactive-map.sed | gzi
 
 diff <(cat input/taxonCache.tsv.gz | gunzip) <(cat output/taxonCache1.tsv.gz| gunzip) | gzip > output/taxonCache.tsv.patch.gz
 diff <(cat input/taxonMap.tsv.gz | gunzip) <(cat output/taxonMap1.tsv.gz| gunzip) | gzip > output/taxonMap.tsv.patch.gz
+
+zcat input/taxonCache.tsv.gz > output/taxonCacheToBePatched.tsv
+zcat output/taxonCache.tsv.patch.gz | patch -b output/taxonCacheToBePatched.tsv
+cat output/taxonCacheToBePatched.tsv | gzip > output/taxonCachePatched.tsv.gz
+
+zcat input/taxonMap.tsv.gz > output/taxonMapToBePatched.tsv
+zcat output/taxonMap.tsv.patch.gz | patch -b output/taxonMapToBePatched.tsv
+cat output/taxonMapToBePatched.tsv | gzip > output/taxonMapPatched.tsv.gz
