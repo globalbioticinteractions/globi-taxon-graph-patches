@@ -4,14 +4,38 @@ Global Biotic Interactions: Taxon Graph Patch 20190920-01
 
 Abstract / Introduction 
 
-This is a improved version of patch 20190816-01 , fixing a minor bug that prevented patching of multiple EOL_V2 ids in the taxonCache file. The patch was generated from GloBI Taxon Graph v0.3.15 [1] and the most recent EOL Dynamic Hierarchy Active Version [2]. 
+This is a improved version of patch 20190816-01 [1], fixing a minor bug that prevented patching of multiple EOL_V2 ids in the taxonCache file. The patch was generated from GloBI Taxon Graph v0.3.15 [2] and the most recent EOL Dynamic Hierarchy Active Version [3]. 
 
+Methods
+
+Repeating a improved script used in patch 20190816-01 [1], 
+to prevent pointing to no longer present EOL web pages from GloBI, 
+an automated precedure was implemented to do the following: for each of 
+the page ids referenced in the current active version of the EOL 
+Dynamic Taxon Hierarchy, make sure that the GloBI Taxon Graph maps to 
+EOL page id with prefix "EOL:". For EOL pages ids that do *not* appear
+in the EOL Dynamic Taxon Hierarchy, ensure that that GloBI Taxon Graph maps
+to EOL page id with prefix "EOL_V2:". 
+
+To apply the patch, run the "patch" program against the original
+taxonCache/taxonMap files with the .patch files on any linux-y system.
+
+Patch files taxonMap.tsv.patch.gz and taxonCache.tsv.patch.gz were 
+created using: create_patch.sh in period 2019-09-20/2019-09-22 .
+
+Result/Discussion 
+
+The resulting improved patch re-mapped previously assumed deprecated links
+back to active EOL page ids. Also, assumed active pages were labeled
+as deprecated by prefixing them with EOL_V2: . 
 
 References
 
-[1] Poelen, Jorrit H. (2019). Global Biotic Interactions: Taxon Graph 
+[1] Poelen, Jorrit H. (2019). Global Biotic Interactions: Taxon Graph Patches (Version 0.3) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.3371634
+
+[2] Poelen, Jorrit H. (2019). Global Biotic Interactions: Taxon Graph 
 (Version 0.3.15) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.3378125
 
-[2] "EOL Dynamic Hierarchy Active Version",
+[3] "EOL Dynamic Hierarchy Active Version",
 https://editors.eol.org/other_files/DWH/TRAM-809/DH_v1_1.tar.gz
 with hash://sha256/81d59d2225e61ed76f62daa4d213609fb53f30e42c7c80fbb400723c728eafa2 . Accessed on 2018-08-16 .  
