@@ -4,11 +4,11 @@ Global Biotic Interactions: Taxon Graph Patch 20190920-01
 
 Abstract / Introduction 
 
-This is a improved version of patch 20190816-01 [1], fixing a minor bug that prevented patching of multiple EOL_V2 ids in the taxonCache file. The patch was generated from GloBI Taxon Graph v0.3.15 [2] and the most recent EOL Dynamic Hierarchy Active Version [3]. 
+This is an improved version of patch 20190816-01 [1], fixing a minor bug that prevented patching of multiple EOL_V2 ids in the taxonCache file. The patch was generated from GloBI Taxon Graph v0.3.15 [2] and the most recent EOL Dynamic Hierarchy Active Version [3]. 
 
 Methods
 
-Repeating a improved script used in patch 20190816-01 [1], 
+Repeating an improved script used in patch 20190816-01 [1], 
 to prevent pointing to no longer present EOL web pages from GloBI, 
 an automated precedure was implemented to do the following: for each of 
 the page ids referenced in the current active version of the EOL 
