@@ -34,18 +34,18 @@ cat input/taxonMap.tsv.gz \
 zcat output/plazi-matches.tsv.gz\
 | grep -v NONE\
 | cut -f1,2,6,7\
-| gzip
+| gzip\
 > output/taxonMapPlazi.tsv.gz
 
 zcat output/plazi-matches.tsv.gz\
 | grep -v NONE\
 | cut -f6-\
-| gzip
+| gzip\
 > output/taxonCachePlazi.tsv.gz
 
 cat input/taxonCache.tsv.gz\
- | head -n1
- | gzip
+ | head -n1\
+ | gzip\
  > output/taxonCache1.tsv.gz
 
 cat input/taxonCache.tsv.gz output/taxonCachePlazi.tsv.gz\
@@ -57,8 +57,8 @@ cat input/taxonCache.tsv.gz output/taxonCachePlazi.tsv.gz\
  >> output/taxonCache1.tsv.gz
 
 cat input/taxonMap.tsv.gz\
- | head -n1
- | gzip
+ | head -n1\
+ | gzip\
  > output/taxonMap1.tsv.gz
 
 cat input/taxonMap.tsv.gz output/taxonMapPlazi.tsv.gz\
