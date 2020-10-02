@@ -1,0 +1,35 @@
+Global Biotic Interactions: Taxon Graph Patch 20201001-01 
+
+2020-10-01 
+
+Abstract / Introduction 
+
+Plazi.org indexes existing taxonomic treatments and make them machine readable. This patch adds links to Plazi taxonomic treatments (e.g., http://treatment.plazi.org/id/873F269E609FF24F40BEA54C44321A15), their original publications (e.g., http://dx.doi.org/10.3897/BDJ.3.e6313) and the associated taxon concept (e.g., http://taxon-concept.plazi.org/id/Animalia/Lethe_appalachia_Chermock_1947).  
+
+Methods
+
+Nomer v0.1.17 [1] is used in provided create_patch.sh script to 
+link names of taxonMap.tsv.gz in GloBI Taxon Graph v0.3.25 [2] to
+Plazi treatments and taxon concepts in Plazi Treatment RDF Archive [3].
+
+To apply the patch, run the "patch" program against the original
+taxonCache/taxonMap files with the .patch files on any linux-y system.
+
+Patch files taxonMap.tsv.patch.gz and taxonCache.tsv.patch.gz were 
+created using: create_patch.sh in period 2020-10-01/2020-10-02 .
+
+Result/Discussion 
+
+The resulting patch adds Plazi links to GloBI Taxon Graph v0.3.25 .
+
+References
+
+[1] Poelen, Jorrit H. (2020). globalbioticinteractions/nomer 
+(Version 0.1.17). Zenodo. http://doi.org/10.5281/zenodo.4062515
+
+[2] Poelen, Jorrit H. (2020). Global Biotic Interactions: Taxon Graph 
+(Version 0.3.25) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.3378125
+
+[3] Plazi. (2020). Plazi Treatment RDF Archive (Version 0.1) 
+[Data set]. Zenodo. http://doi.org/10.5281/zenodo.4062537
+
