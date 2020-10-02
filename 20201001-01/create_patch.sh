@@ -26,7 +26,6 @@ cat input/taxonMap.tsv.gz \
  | tail -n+2\
  | sort\
  | uniq\
- | head -n100\
  | java -jar input/nomer.jar append -p input/nomer.properties plazi\
  | gzip\
  > output/plazi-matches.tsv.gz
