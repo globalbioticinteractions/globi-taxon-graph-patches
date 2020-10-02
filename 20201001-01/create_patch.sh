@@ -20,23 +20,24 @@ curl "https://github.com/globalbioticinteractions/nomer/releases/download/0.1.17
 echo 'nomer.schema.input=[{"column":2,"type":"externalId"},{"column": 3,"type":"name"}]' > input/nomer.properties
 echo "nomer.plazi.treatments.archive=file://$PWD/input/plazi-treatments-rdf.zip" >> input/nomer.properties
 
-cat taxonMap.tsv.gz \
+cat input/taxonMap.tsv.gz \
  | gunzip\
  | awk -F '\t' '{ print $1 "\t" $2 "\t\t" $4 }'\
  | tail -n+2\
  | sort\
  | uniq\
+ | head -n100\
  | java -jar input/nomer.jar append -p input/nomer.properties plazi\
  | gzip\
- > plazi-matches.tsv.gz
+ > output/plazi-matches.tsv.gz
 
-zcat plazi-matches.tsv.gz\
+zcat output/plazi-matches.tsv.gz\
 | grep -v NONE\
 | cut -f1,2,6,7\
 | gzip
 > output/taxonMapPlazi.tsv.gz
 
-zcat plazi-matches.tsv.gz\
+zcat output/plazi-matches.tsv.gz\
 | grep -v NONE\
 | cut -f6-\
 | gzip
