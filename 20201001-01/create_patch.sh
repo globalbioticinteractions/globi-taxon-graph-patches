@@ -7,14 +7,14 @@ set -xe
 mkdir -p input output
 
 # get a Plazi Treatments RDF Archive
-curl "https://zenodo.org/record/4062537/files/plazi-treatments-rdf.zip" > input/plazi-treatments-rdf.zip
+curl -L "https://zenodo.org/record/4062537/files/plazi-treatments-rdf.zip" > input/plazi-treatments-rdf.zip
 
 # get GloBI taxon graph 0.3.25
-curl https://zenodo.org/record/3378125/files/taxonMap.tsv.gz > input/taxonMap.tsv.gz
+curl -L https://zenodo.org/record/3378125/files/taxonMap.tsv.gz > input/taxonMap.tsv.gz
 curl https://zenodo.org/record/3378125/files/taxonCache.tsv.gz > input/taxonCache.tsv.gz
 
 # get nomer v0.1.17 
-curl "https://github.com/globalbioticinteractions/nomer/releases/download/0.1.17/nomer.jar" > input/nomer.jar
+curl -L "https://github.com/globalbioticinteractions/nomer/releases/download/0.1.17/nomer.jar" > input/nomer.jar
 
 # link names to Plazi
 echo 'nomer.schema.input=[{"column":2,"type":"externalId"},{"column": 3,"type":"name"}]' > input/nomer.properties
