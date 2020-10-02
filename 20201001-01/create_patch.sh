@@ -44,6 +44,7 @@ zcat output/plazi-matches.tsv.gz\
 > output/taxonCachePlazi.tsv.gz
 
 cat input/taxonCache.tsv.gz\
+ | gunzip\
  | head -n1\
  | gzip\
  > output/taxonCache1.tsv.gz
@@ -57,6 +58,7 @@ cat input/taxonCache.tsv.gz output/taxonCachePlazi.tsv.gz\
  >> output/taxonCache1.tsv.gz
 
 cat input/taxonMap.tsv.gz\
+ | gunzip\
  | head -n1\
  | gzip\
  > output/taxonMap1.tsv.gz
