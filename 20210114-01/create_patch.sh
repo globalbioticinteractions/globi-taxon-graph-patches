@@ -20,7 +20,7 @@ curl -L "https://github.com/globalbioticinteractions/nomer/releases/download/0.1
 
 cat input/taxonMap.tsv.gz \
  | gunzip\
- | awk -F '\t' '{ print $1 "\t" $2 "\t\t" $4 }'\
+ | grep "NCBI:"\
  | tail -n+2\
  | sort\
  | uniq\
@@ -71,9 +71,15 @@ cat input/taxonMap.tsv.gz\
  | gzip\
  > output/taxonMap1.tsv.gz
 
-cat input/taxonMap.tsv.gz output/taxonMapNCBI.tsv.gz\
+cat input/taxonMap.tsv.gz\
  | gunzip\
  | tail -n+2\
+ | grep -v "NCBI:"\
+ | gzip\
+ > output/taxonMapNoNCBI.tsv.gz
+
+cat input/taxonMapNoNCBI.tsv.gz output/taxonMapNCBI.tsv.gz\
+ | gunzip\
  | sort\
  | uniq\
  | gzip\
