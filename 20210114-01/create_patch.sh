@@ -22,26 +22,27 @@ cat input/taxonMap.tsv.gz \
  | gunzip\
  | grep "NCBI:"\
  | tail -n+2\
+ | cut -f1,2\
  | sort\
  | uniq\
  | java -jar input/nomer.jar append ncbi-taxon-id\
  | gzip\
  > output/ncbi-matches.tsv.gz
 
-cat input/taxonMap.tsv.gz \
+cat output/ncbi-matches.tsv.gz \
  | gunzip\
- | grep "NCBI:"\
- | tail -n+2\
+ | grep "NONE"\
+ | cut -f1,2\
  | sort\
  | uniq\
  | java -jar input/nomer.jar append globi-globalnames\
  | gzip\
- >> output/ncbi-matches.tsv.gz
+ >> output/gn-matches.tsv.gz
 
 
 zcat output/ncbi-matches.tsv.gz\
 | grep -v NONE\
-| cut -f1,2,6,7\
+| cut -f1,2,4,5\
 | gzip\
 > output/taxonMapNCBI.tsv.gz
 
