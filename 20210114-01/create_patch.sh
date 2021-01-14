@@ -24,7 +24,7 @@ cat input/taxonMap.tsv.gz \
  | tail -n+2\
  | sort\
  | uniq\
- | java -jar input/nomer.jar append ncbi\
+ | java -jar input/nomer.jar append ncbi-taxon-id\
  | gzip\
  > output/ncbi-matches.tsv.gz
 
