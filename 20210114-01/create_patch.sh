@@ -30,7 +30,7 @@ cat input/taxonMap.tsv.gz \
 
 cat input/taxonMap.tsv.gz \
  | gunzip\
- | awk -F '\t' '{ print $1 "\t" $2 "\t\t" $4 }'\
+ | grep "NCBI:"\
  | tail -n+2\
  | sort\
  | uniq\
