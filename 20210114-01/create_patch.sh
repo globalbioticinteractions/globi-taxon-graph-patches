@@ -40,13 +40,15 @@ cat output/ncbi-matches.tsv.gz \
  >> output/gn-matches.tsv.gz
 
 
-zcat output/ncbi-matches.tsv.gz\
+cat output/ncbi-matches.tsv.gz output/gn-matches.tsv.gz\
+| gunzip\
 | grep -v NONE\
 | cut -f1,2,4,5\
 | gzip\
 > output/taxonMapNCBI.tsv.gz
 
-zcat output/ncbi-matches.tsv.gz\
+cat output/ncbi-matches.tsv.gz output/gn-matches.tsv.gz\
+| gunzip\
 | grep -v NONE\
 | cut -f6-\
 | gzip\
