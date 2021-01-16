@@ -16,8 +16,8 @@ function init {
   curl -L https://zenodo.org/record/4118439/files/taxonMap.tsv.gz > input/taxonMap.tsv.gz
   curl -L https://zenodo.org/record/4118439/files/taxonCache.tsv.gz > input/taxonCache.tsv.gz
 
-  # get nomer v0.1.19
-  curl -L "https://github.com/globalbioticinteractions/nomer/releases/download/0.1.19/nomer.jar" > input/nomer.jar
+  # get nomer v0.1.20
+  curl -L "https://github.com/globalbioticinteractions/nomer/releases/download/0.1.20/nomer.jar" > input/nomer.jar
 }
 
 function resolve {
