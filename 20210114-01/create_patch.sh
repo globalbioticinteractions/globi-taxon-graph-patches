@@ -71,7 +71,7 @@ function merge {
   cat output/ncbi-matches.tsv.gz output/gn-matches-with-original-paths.tsv.gz\
 | gunzip\
 | grep -v NONE\
-| cut -f6-\
+| cut -f4-\
 | gzip\
 > output/taxonCacheNCBI.tsv.gz
 
