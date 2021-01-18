@@ -43,6 +43,19 @@ function resolve {
  >> output/gn-matches.tsv.gz
 }
 
+function resolve_paths_for_gn_matches {
+ # re-resolve gn matches to avoid including truncated ncbi paths
+ cat output/gn-matches.tsv.gz \
+ | gunzip\
+ | grep "NONE"\
+ | cut -f4,5\
+ | sort\
+ | uniq\
+ | java -jar input/nomer.jar append ncbi-taxon-id\
+ | gzip\
+ > output/gn-matches-with-original-paths.tsv.gz
+}
+
 function merge {
   # merge newly resolved ncbi taxa into taxon graph
   cat output/ncbi-matches.tsv.gz output/gn-matches.tsv.gz\
@@ -52,7 +65,10 @@ function merge {
 | gzip\
 > output/taxonMapNCBI.tsv.gz
 
-  cat output/ncbi-matches.tsv.gz output/gn-matches.tsv.gz\
+  # do not use gn paths because they contain incorrectly parsed names
+  resolve_paths_for_gn_matches
+
+  cat output/ncbi-matches.tsv.gz output/gn-matches-with-original-paths.tsv.gz\
 | gunzip\
 | grep -v NONE\
 | cut -f6-\
