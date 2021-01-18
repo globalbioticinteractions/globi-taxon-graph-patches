@@ -47,7 +47,7 @@ function resolve_paths_for_gn_matches {
  # re-resolve gn matches to avoid including truncated ncbi paths
  cat output/gn-matches.tsv.gz \
  | gunzip\
- | grep "NONE"\
+ | grep -v "NONE"\
  | cut -f4,5\
  | sort\
  | uniq\
