@@ -81,7 +81,13 @@ function merge {
  | gzip\
  > output/taxonCache1.tsv.gz
 
-  cat input/taxonCache.tsv.gz output/taxonCacheNCBI.tsv.gz\
+  cat input/taxonCache.tsv.gz\
+  | gunzip\
+  | grep -v "NCBI:"\
+  | gzip\
+  > output/taxonCacheNoNCBI.tsv.gz
+
+  cat output/taxonCacheNoNCBI.tsv.gz output/taxonCacheNCBI.tsv.gz\
  | gunzip\
  | tail -n+2\
  | sort\
@@ -111,8 +117,8 @@ function merge {
 }
 
 function create_patch {
-  diff <(cat input/taxonCache.tsv.gz | gunzip) <(cat output/taxonCache1.tsv.gz| gunzip) | gzip > output/taxonCache.tsv.patch.gz
-  diff <(cat input/taxonMap.tsv.gz | gunzip) <(cat output/taxonMap1.tsv.gz| gunzip) | gzip > output/taxonMap.tsv.patch.gz
+  diff <(cat input/taxonCache.tsv.gz | gunzip) <(cat output/taxonCache1.tsv.gz | gunzip) | gzip > output/taxonCache.tsv.patch.gz
+  diff <(cat input/taxonMap.tsv.gz | gunzip) <(cat output/taxonMap1.tsv.gz | gunzip) | gzip > output/taxonMap.tsv.patch.gz
 
   cat input/taxonCache.tsv.gz | gunzip > output/taxonCacheToBePatched.tsv
   cat output/taxonCache.tsv.patch.gz | gunzip | patch -b output/taxonCacheToBePatched.tsv
