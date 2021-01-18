@@ -102,7 +102,7 @@ function merge {
  | gzip\
  > output/taxonMapNoNCBI.tsv.gz
 
-  cat input/taxonMapNoNCBI.tsv.gz output/taxonMapNCBI.tsv.gz\
+  cat output/taxonMapNoNCBI.tsv.gz output/taxonMapNCBI.tsv.gz\
  | gunzip\
  | sort\
  | uniq\
