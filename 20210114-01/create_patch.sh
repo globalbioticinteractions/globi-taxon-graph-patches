@@ -60,7 +60,7 @@ function merge {
   # exclude gn matches against (sub)species names consisting of a single word
   cat output/gn-matches.tsv.gz\
   | gunzip\
-  | grep -v -P "\t[a-zA-Z]+\t(([Ss]pecies)|([Ss]ubspecies))"
+  | grep -v -E "\t[a-zA-Z]+\t(([Ss]pecies)|([Ss]ubspecies))"
   | gzip\
   > output/gn-matches-filtered.tsv.gz
 
