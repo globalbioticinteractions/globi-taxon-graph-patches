@@ -45,7 +45,7 @@ function resolve {
 
 function resolve_paths_for_gn_matches {
  # re-resolve gn matches to avoid including truncated ncbi paths
- cat output/gn-matches.tsv.gz \
+ cat "$1" \
  | gunzip\
  | grep -v "NONE"\
  | cut -f4,5\
@@ -57,8 +57,15 @@ function resolve_paths_for_gn_matches {
 }
 
 function merge {
+  # exclude gn matches against (sub)species names consisting of a single word
+  cat output/gn-matches.tsv.gz\
+  | gunzip\
+  | grep -v -P "\t[a-zA-Z]+\t(([Ss]pecies)|([Ss]ubspecies))"
+  | gzip\
+  > output/gn-matches-filtered.tsv.gz
+
   # merge newly resolved ncbi taxa into taxon graph
-  cat output/ncbi-matches.tsv.gz output/gn-matches.tsv.gz\
+  cat output/ncbi-matches.tsv.gz output/gn-matches-filtered.tsv.gz\
 | gunzip\
 | grep -v NONE\
 | cut -f1,2,4,5\
@@ -66,7 +73,7 @@ function merge {
 > output/taxonMapNCBI.tsv.gz
 
   # do not use gn paths because they contain incorrectly parsed names
-  resolve_paths_for_gn_matches
+  resolve_paths_for_gn_matches output/gn-matches-filtered.tsv.gz
 
   cat output/ncbi-matches.tsv.gz output/gn-matches-with-original-paths.tsv.gz\
 | gunzip\
