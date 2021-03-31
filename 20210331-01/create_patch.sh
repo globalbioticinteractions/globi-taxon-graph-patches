@@ -33,22 +33,22 @@ function patch_eol_virus_names {
   > output/eol-virus-id-names-patched.tsv
 
   paste <(cut -f1,2 output/eol-virus-names.tsv) output/eol-virus-names-from-path.tsv\
-  | awk '{ print "s/" $1 "\t" $2 "$/" + $1 + "\t" + $3 "/g" }'\
+  | awk -F '\t' '{ print "s/" $1 "\\t" $2 "\\$/" $1 "\\t" $3 "/g" }'\
   > output/replace-end.sed 
  
   paste <(cut -f1,2 output/eol-virus-names.tsv) output/eol-virus-names-from-path.tsv\
-  | awk '{ print "s/^" $1 "\t" $2 "\t/" + $1 + "\t" + $3 "\t/g" }'\
+  | awk -F '\t' '{ print "s/^" $1 "\\t" $2 "\\t/" $1 "\\t" $3 "\\t/g" }'\
   > output/replace-start.sed
   
   cat input/taxonMap.tsv.gz\
   | gunzip\
-  | sed -f output/replace-end.sed\
+  | sed -e -f output/replace-end.sed\
   | gzip\
   > output/taxonMap.tsv.gz
 
   cat input/taxonCache.tsv.gz\
   | gunzip\
-  | sed -f output/replace-start.sed\
+  | sed -e -f output/replace-start.sed\
   | gzip\
   > output/taxonCache.tsv.gz
 }
