@@ -42,13 +42,13 @@ function patch_eol_virus_names {
   
   cat input/taxonMap.tsv.gz\
   | gunzip\
-  | sed -f replace-end.sed\
+  | sed -f output/replace-end.sed\
   | gzip\
   > output/taxonMap.tsv.gz
 
   cat input/taxonCache.tsv.gz\
   | gunzip\
-  | sed -f replace-start.sed\
+  | sed -f output/replace-start.sed\
   | gzip\
   > output/taxonCache.tsv.gz
 }
