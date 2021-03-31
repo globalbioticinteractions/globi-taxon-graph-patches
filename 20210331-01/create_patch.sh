@@ -15,7 +15,7 @@ function init {
 }
 
 function patch_eol_virus_names {
- cat taxonCache.tsv.gz\
+ cat input/taxonCache.tsv.gz\
  | gunzip\
  | grep "EOL.*Viruses"\
  | cut -f5\
@@ -44,9 +44,9 @@ function patch_eol_virus_names {
   | gunzip\
   | sed -f replace-end.sed\
   | gzip\
-  > output/taxonCache.tsv.gz
+  > output/taxonMap.tsv.gz
 
-  cat input/taxonMap.tsv.gz\
+  cat input/taxonCache.tsv.gz\
   | gunzip\
   | sed -f replace-start.sed\
   | gzip\
