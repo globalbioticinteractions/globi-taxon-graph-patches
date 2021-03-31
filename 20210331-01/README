@@ -1,0 +1,28 @@
+Global Biotic Interactions: Taxon Graph Patch 20210331-01 
+
+2021-03-31
+
+Abstract / Introduction 
+
+In https://github.com/globalbioticinteractions/globalbioticinteractions/issues/640, Colin J. Carlson shared some virus name inconsistencies like "West Nile virus" being shown as "West virus", and "Ross River virus" shown as "Ross virus". This patch replaces the incorrectly altered names (e.g., "West virus") with the original names (e.g., "West Nile virus"). Likely root cause is that the virus names were passed through a taxonomic names parser that treated secondary capitalized names as author names.  
+
+Methods
+
+A script "create_patch.sh" was constructed to replace all virus names associated with EOL prefixes (i.e., EOL: and EOL_V2:) with their names from the associated full taxonomic path.
+
+To apply the patch, run the "patch" program against the original
+taxonCache/taxonMap files with the .patch files on any linux-y system.
+
+Patch files taxonMap.tsv.patch.gz and taxonCache.tsv.patch.gz were 
+created using: create_patch.sh in period 2021-01-14/2021-01-19 .
+
+Result/Discussion 
+
+The resulting patch updates existing EOL virus names in GloBI Taxon Graph v0.3.30 [1] .
+
+References
+
+[1] Poelen, Jorrit H. (2020). Global Biotic Interactions: Taxon Graph 
+(Version 0.3.30) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.4593724
+
+
