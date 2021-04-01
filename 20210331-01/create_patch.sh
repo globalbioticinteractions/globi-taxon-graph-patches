@@ -33,7 +33,7 @@ function patch_eol_virus_names {
   > output/eol-virus-id-names-patched.tsv
 
   paste <(cut -f1,2 output/eol-virus-names.tsv) output/eol-virus-names-from-path.tsv\
-  | awk -F '\t' '{ print "s+" $1 "\\t" $2 "\\$+" $1 "\\t" $3 "+g" }'\
+  | awk -F '\t' '{ print "s+" $1 "\\t" $2 "$+" $1 "\\t" $3 "+g" }'\
   > output/replace-end.sed 
  
   paste <(cut -f1,2 output/eol-virus-names.tsv) output/eol-virus-names-from-path.tsv\
