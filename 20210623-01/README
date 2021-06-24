@@ -18,7 +18,7 @@ created using: create_patch.sh in period 2021-06-23 .
 
 Result/Discussion 
 
-The resulting patch removed likely suspicious virus name mappings in GloBI Taxon Graph v0.3.33 [1] .
+The resulting patch removed likely suspicious virus name mappings in GloBI Taxon Graph v0.3.32 [1] .
 
 References
 
