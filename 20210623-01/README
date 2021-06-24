@@ -1,0 +1,28 @@
+Global Biotic Interactions: Taxon Graph Patch 20210331-01 
+
+2021-06-23
+
+Abstract / Introduction 
+
+In https://github.com/globalbioticinteractions/globalbioticinteractions/issues/672, Github user @pozsgaig (https://github.com/pozsgaig) shared some suspicious pathogen interaction in which a moth appeared to be a pathogen of another moth (e.g., Plutella xylostella pathogen of Spodoptera ornithogalli). Likely root cause is invalid name mapping. 
+
+Methods
+
+A script "create_patch.sh" was constructed to remove name mappings involving likely virus name acronyms. The names are detected by including all names ending with capital V, except for those with explicit NCBI taxon ids. Example includes: "Plutella xylostella NPV", a name likely referring to "Plutella xylostella multiple nucleopolyhedrovirus", NCBI:txid379891, https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=379891. This virus name appears to have been incorrectly mapped to "Plutella xylostella", a moth and the related host that the virus is known to infect.  
+
+To apply the patch, run the "patch" program against the original
+taxonMap file with the .patch files on any linux-y system.
+
+Patch files taxonMap.tsv.patch.gz was 
+created using: create_patch.sh in period 2021-06-23 .
+
+Result/Discussion 
+
+The resulting patch removed likely suspicious virus name mappings in GloBI Taxon Graph v0.3.33 [1] .
+
+References
+
+[1] Poelen, Jorrit H. (2021). Global Biotic Interactions: Taxon Graph 
+(Version 0.3.33) [Data set]. Zenodo. http://doi.org/10.5281/zenodo.xxxx
+
+
