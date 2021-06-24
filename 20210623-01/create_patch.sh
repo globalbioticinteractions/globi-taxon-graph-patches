@@ -29,12 +29,12 @@ function remove_likely_suspicious_virus_acronym_mappings {
   | gzip\
   > output/taxonMapExcluding_Vs.tsv.gz
 
-  cat taxonMapNCBI_Vs.tsv.gz taxonMapExcluding_Vs.tsv.gz\
+  cat output/taxonMapNCBI_Vs.tsv.gz output/taxonMapExcluding_Vs.tsv.gz\
   | sort\
   | uniq\
   > output/taxonMapNoHeader.tsv.gz
  
-  cat <(cat input/taxonMap.tsv.gz | gunzip | head -n1) <(cat output/taxonMapNoHeader.tsv.gz)\
+  cat <(cat input/taxonMap.tsv.gz | gunzip | head -n1 | gzip) <(cat output/taxonMapNoHeader.tsv.gz)\
   > output/taxonMap.tsv.gz
 
 }
