@@ -34,7 +34,9 @@ function remove_likely_suspicious_virus_acronym_mappings {
   | uniq\
   > output/taxonMapNoHeader.tsv.gz
  
-  cat <(cat input/taxonMap.tsv.gz | gunzip | head -n1 | gzip) <(cat output/taxonMapNoHeader.tsv.gz)\
+  cat input/taxonMap.tsv.gz | gunzip | head -n1 | gzip\
+  > output/taxonMapHeader.tsv.gz 
+  cat output/taxonMapHeader.tsv.gz output/taxonMapNoHeader.tsv.gz\
   > output/taxonMap.tsv.gz
 
 }
