@@ -30,6 +30,7 @@ function remove_likely_suspicious_virus_acronym_mappings {
   > output/taxonMapExcluding_Vs.tsv.gz
 
   cat output/taxonMapNCBI_Vs.tsv.gz output/taxonMapExcluding_Vs.tsv.gz\
+  | gunzip\
   | sort\
   | uniq\
   | gzip\
