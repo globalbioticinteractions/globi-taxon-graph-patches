@@ -1,0 +1,33 @@
+Global Biotic Interactions: Taxon Graph Patch 20231026-01
+
+2023-10-26
+
+Abstract / Introduction 
+
+Via https://discuss.eol.org/t/questionable-link-in-trophic-web-for-white-tailed-jackrabbit/2296 https://github.com/globalbioticinteractions/globalwebdb/issues/1 Jen Hammock relayed a comment by Ryan Hill -
+
+> lumbrjak Ryan Hill said:
+>
+> on the page for White-tailed jackrabbit, the common mallard (duck) is shown as prey (food source). This is incorrect.
+
+Methods
+
+A script "create_patch.sh" was constructed to remove name mappings between "crested wheatgrass" and "Anas platyrhynchos".
+
+
+To apply the patch, run the "patch" program against the original
+taxonMap file with the .patch files on any linux-y system.
+
+Patch files taxonMap.tsv.patch.gz was 
+created using: create_patch.sh in period 2023-10-26 .
+
+Result/Discussion 
+
+The resulting patch removed incorrect mapping between "crested wheatgrass" and "Anas platyrhynchos".
+
+References
+
+[1] Poelen, Jorrit H. (2023). Global Biotic Interactions: Taxon Graph 
+(Version 0.4.3) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.10037600
+
+
