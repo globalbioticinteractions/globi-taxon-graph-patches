@@ -1,0 +1,43 @@
+Global Biotic Interactions: Taxon Graph Patch 20240617-01
+
+2024-06-17
+
+Abstract / Introduction 
+
+As noted by https://github.com/kbseah in https://github.com/globalbioticinteractions/globalbioticinteractions/issues/968 - 
+
+
+"[...] I found an unusual error when the taxon Candidatus Endoriftia persephone is used in a query (adding a screenshot in case this the problem is specific to my browser):
+https://www.globalbioticinteractions.org/?interactionType=interactsWith&targetTaxon=Candidatus%20Endoriftia%20persephone
+
+[...] 
+
+Under the taxon name, instead of a single link per external database as expected, there are multiple links. What they all have in common is that the names start with Candidatus. This is a designation used only in prokaryotic nomenclature for provisional names of taxa that are not yet in culture, because the prokaryotic code requires a type culture for valid publication (details).
+
+Perhaps Candidatus names are being misinterpreted as Linnean trinomials by the name matcher?
+
+Surprisingly there was no Wikidata item for Candidatus Endoriftia persephone, but I've just created one: https://www.wikidata.org/wiki/Q124846046
+"
+
+Proposed fix is to remove all Candidatus mappings and allow for future versions of the GloBI Taxon Graph to re-introduce mappings using an updated name matching algorithm.
+
+Methods
+
+A script "create_patch.sh" was constructed to remove name mappings mentioning "Candidatus".
+
+
+To apply the patch, run the "patch" program against the original
+taxonMap file with the .patch files on any linux-y system.
+
+Patch files taxonMap.tsv.patch.gz was 
+created using: create_patch.sh in period 2024-06-17 .
+
+Result/Discussion 
+
+The resulting patch removed incorrect mapping involving "Candidatus".
+
+References
+
+[1] Poelen, J. H. (2023). Global Biotic Interactions: Taxon Graph (0.4.5) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.10045365
+
+
